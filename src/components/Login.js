@@ -4,7 +4,7 @@ import "../App.css";
 const authEndpoint = 'https://accounts.spotify.com/authorize';
 // Replace with your app's client ID, redirect URI and desired scopes
 const clientId = "17fe4d950d0a4aea98cb4de221277d80";
-const redirectUri = "http://localhost:3000";
+const redirectUri = "https://spotify-helper.netlify.app";
 const scopes = [
   "user-read-email",
   "playlist-read-private",

@@ -15,7 +15,7 @@ import Album from './components/Album';
 import getProfile from "./helpers/getProfile"
 
 const tokenEndpoint = 'https://accounts.spotify.com/api/token';
-const redirect_uri = "http://localhost:3000";
+const redirect_uri = "https://spotify-helper.netlify.app";
 
 function App() {
   const [accessToken, setAccessToken] = useState();
