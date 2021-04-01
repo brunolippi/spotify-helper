@@ -1,6 +1,6 @@
-# Getting Started with Create React App
+# Spotify Helper
 
-Este sitio está publicado en [Netlify](https://spotify-helper.netlify.app/).
+Este sitio está publicado en [Netlify](https://spotify-helper.netlify.app/) (https://spotify-helper.netlify.app/).
 
 ## Available Scripts
 
