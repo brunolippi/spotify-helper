@@ -1,0 +1,186 @@
+/* 
+
+Color de fondo primario:   #e9ecef
+Color de fondo secundario: #f2f4f7
+
+*/
+
+.eventBox {
+    border: 1px solid var(--text-color - level3, rgba(77, 80, 85, 0.1));
+    border-radius: 8px;
+    display: flex;
+    box-shadow: 1px 1px 8px 0 rgba(0, 0, 0, 0.08);
+    background-color: #e9ecef; 
+    max-width: 900px;
+    min-height: 550px;
+}
+
+.infoBox {
+    display: block;
+}
+
+.custom-today-day{
+    color:#0026CA !important;
+  border: 1px solid #0026CA !important;
+}
+
+.infoBox p {
+    display: inline;
+    font-weight: 600;
+    color: rgba(77, 80, 85, 0.6);
+}
+
+.icons {
+    color: rgba(77, 80, 85, 0.6);
+    font-size: 20px;
+}
+
+h4 {
+    color: rgba(77, 80, 85, 0.6);
+    font-size: 16px;
+}
+
+h3{
+    display: block;
+    font-size: 20px;
+    color: rgb(77, 80, 85);
+}
+
+h2 {
+    color: rgb(77, 80, 85);
+    font-size: 24px;
+}
+
+h1 {
+    color: rgb(77, 80, 85);
+    font-size: 28px;
+}
+
+.dividerR {
+    border-right: 1px solid var(--text-color-level3, rgba(77, 80, 85, 0.1));
+  }
+
+.dividerB {
+    border-bottom: 1px solid var(--text-color-level3, rgba(77, 80, 85, 0.1));
+  }
+.calendar-style {
+    background-color: #e9ecef!important;
+    box-shadow: none!important;
+}
+
+.Calendar__weekDays {
+    color: #8f8d8d!important
+}
+
+.Calendar__day:hover {
+    background: #0026CA,
+}
+
+.horarios {
+    position: relative;
+    display: inline-block;
+  justify-content: center;
+  transition: all 0.3s ease;
+  width: 100%;
+  transition-property: width, transform;
+
+}
+
+.calendar-box{
+    overflow:hidden; overflow-y:auto;
+    height:450px; width:22%;
+    scrollbar-width: thin!important;
+    white-space: nowrap; /* !! Esto esconde el confirmar */
+}
+
+::-webkit-scrollbar{
+    background-color: #e9ecef!important;
+    width: 8px;
+    background: #c2c9d2;
+}
+
+.calendar-box::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    background: #c2c9d2;
+  }
+
+  .scrollbar::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+  }
+
+  .Calendar__day:not(.-blank):not(.-selectedStart):not(.-selectedEnd):not(.-selectedBetween):not(.-selected):hover {
+      background: #c3cefc!important;
+  }
+
+  .selectedHora {
+    transition: all 0.3s ease;
+    transition-property: width, transform;
+    width: 48.5%!important;
+    margin-right: 3%;
+  }
+
+  .selectedConf {
+    transition: all 0.3s ease;
+    transition-property: width, transform;
+    transform: translateX(0)!important;
+    display: inline!important;
+} 
+.conf {
+    transform: translateX(40px);
+    width: 48.5%;
+    position: relative;
+    left: 0;
+    height: 100%;
+}
+
+.blue svg,.blue p {
+    color: #0026CA!important;
+}
+
+p.blue {
+    color: #0026CA!important;
+}
+
+a:hover {
+    text-decoration: none!important;
+}
+
+.btn-lg ::after {
+    position: fixed;
+    left: 0;
+    width: 100%;
+    content: '';
+}
+
+.btn-group-lg>.btn-lg.conf{
+    font-size: 10px!important;
+}
+
+.btn-lg:focus {
+    outline: 0 !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+}
+.btn:focus {
+    outline: 0 !important;
+}
+
+.invisible {
+    display: none;
+}
+
+.formWidth {
+    width: 100%;
+}
+
+.timezone-picker-textfield{
+    box-sizing: content-box!important
+}
+
+.dropdown-menu {
+    background-color: #f2f4f7;
+}
+
+.greyed {
+    color: rgba(0,0,0,0.5)
+}

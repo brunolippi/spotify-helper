@@ -1,0 +1,42 @@
+.sidebar {
+        position: fixed;
+        top: 3.5rem;
+        left: 0;
+        z-index: 100;
+        width: 13%;
+        height: 100%;
+        padding: 48px 0 0;
+        background-color:#000058!important;
+    }
+
+.sidebar::before{
+
+    background-color:#f3f5f7!important
+}
+
+.nav-link a{
+    color: rgb(212, 209, 209)!important;
+}
+
+.nav-link a:hover{
+    text-decoration: none;
+}
+
+.nav-link{
+        color: rgb(212, 209, 209)!important;
+}
+
+.dropdown-toggle {
+    color: rgb(212, 209, 209)!important;
+}
+
+.nav-link {
+    text-align: left;
+    align-items: center;
+    display: flex;
+    justify-content: space-between
+}
+
+.sidebar .active {
+    background-color:#000072!important
+}

@@ -1,21 +1,18 @@
-.App {
-  text-align: center;
-}
-
 .App-logo {
-  height: 40vmin;
+  height: 20vmin;
   pointer-events: none;
+  margin-bottom: 2rem;
 }
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+    animation: App-logo-spin infinite 5s linear;
   }
 }
 
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
+  min-height: 91vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -30,9 +27,70 @@
 
 @keyframes App-logo-spin {
   from {
-    transform: rotate(0deg);
-  }
-  to {
     transform: rotate(360deg);
   }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+.pageBox {
+  min-height: calc(90vh - 33px );
+  margin-bottom: 2rem;
+  background-color: #e9ecef;
+  border-radius: .3rem;
+}
+
+button {
+  border-radius: 45px!important;
+}
+
+button a:hover{
+  text-decoration: none
+}
+
+p {
+  font-size: 17px;
+  color: #343a40!important;
+}
+
+.no-underline {
+  text-decoration: none!important;
+  color: inherit!important;
+}
+.no-underline:hover {
+  text-decoration: none!important;
+}
+
+button a{
+  color: white !important;
+}
+
+b {
+  font-size: 18px;
+}
+
+.playlists {
+    margin-left: auto;
+    margin-right: auto;
+    display: inline-block;
+}
+
+.breadcrumb {
+    padding: none!important;
+    margin-bottom: none!important;
+}
+
+ol {
+  margin-block-start: 0!important;
+    margin-block-end: .25rem!important;
+    margin-inline-start: 0!important;
+    margin-inline-end: 0!important;
+    padding-inline-start: 0!important;
+}
+
+.profile {
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
 }
