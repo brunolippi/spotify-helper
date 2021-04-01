@@ -1,6 +1,6 @@
 # Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Este sitio está publicado en [Netlify](https://spotify-helper.netlify.app/).
 
 ## Available Scripts
 
