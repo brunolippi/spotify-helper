@@ -5,4 +5,4 @@
 Este sitio está publicado en [Netlify](https://spotify-helper.netlify.app/) (https://spotify-helper.netlify.app/).
 
 
-# <img src="public/github/playlists.JPG" width="650">
+# <img src="public/github/playlists.JPG">
