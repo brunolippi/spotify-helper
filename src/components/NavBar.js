@@ -30,7 +30,7 @@ const NavBar = (props) => {
                 <NavDropdown.Item disabled>{props.profile.display_name}</NavDropdown.Item>
                 <hr />
                 <NavDropdown.Item to="/profile" as={Link}>Perfil</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">Configuración</NavDropdown.Item>
+                <NavDropdown.Item to="/info" as={Link}>Información</NavDropdown.Item>
                 <NavDropdown.Divider />
                 <NavDropdown.Item onClick={() => props.logout()}>Log out</NavDropdown.Item>
             </NavDropdown>

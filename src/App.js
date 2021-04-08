@@ -5,6 +5,7 @@ import NavBar from './components/NavBar';
 import Playlist from './components/Playlist';
 import Sidebar from './components/Sidebar';
 import Library from './components/Library';
+import Info from './components/Info';
 import Home from './Home'
 import Login from './components/Login';
 import { BrowserRouter, Route } from 'react-router-dom';
@@ -65,14 +66,14 @@ function App() {
 
   return (
     <BrowserRouter>
-      <div className="App">
+      <div>
         <NavBar logout={Logout} logged={accessToken} profile={profile}></NavBar>
         {accessToken && <Sidebar logout={Logout} />}
-        <div className={accessToken && "pt-5"}>
+        {accessToken ?
+        <div className="pt-5">
                 <Col md={accessToken && { span: 10, offset: 2 }}>
                     <div className='justify-content-md-center' id="full">
                         <div className={accessToken && 'pageBox p-4'}>
-                            {accessToken ?
                               <>
                                 <Route exact path="/"><Home token={accessToken} /></Route>
                                 <Route exact path="/playlist/:id"><Playlist token={accessToken} /></Route>
@@ -80,13 +81,14 @@ function App() {
                                 <Route exact path="/library"><Library token={accessToken} /></Route>
                                 <Route exact path="/album/:id"><Album token={accessToken} /></Route>
                                 <Route exact path="/albums"><Albums token={accessToken} /></Route>
+                                <Route exact path="/info"><Info /></Route>
                                 <Route exact path="/login"><Login /></Route>
                               </>
-                              : <Login />}
                         </div>
                     </div>
                 </Col>
             </div>
+    : <Login />}
       </div>
     </BrowserRouter>
   );

@@ -2,11 +2,12 @@ import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react"
 import { getPlaylist } from "../helpers/getPlaylists"
-import { Card, Button, Table, Modal, Breadcrumb } from "react-bootstrap"
+import { Card, Button, Table, Modal, Breadcrumb, OverlayTrigger, Tooltip } from "react-bootstrap"
 import { faFileAudio } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import deleteSongFromPlaylist from "../helpers/deleteSongFromPlaylist"
 import ModalAddToPlaylist from "./ModalAddToPlaylist";
+
 
 function Playlist({ token }) {
 
@@ -16,6 +17,7 @@ function Playlist({ token }) {
 
     const [play, setPlay] = useState(true);
     const [playNum, setPlayNum] = useState();
+    let change = 0;
 
     useEffect(() => {
         getPlaylist(token, id).then(res => {
@@ -31,9 +33,11 @@ function Playlist({ token }) {
             setPlay(!play)
         } else {
             pausePreview(playNum)
+            setPlayNum(id)
             setPlay(!play)
         }
     }
+    
 
     function playPreview(url, id) {
         let sound = document.createElement('audio');
@@ -63,6 +67,7 @@ function Playlist({ token }) {
             document.getElementById("tr-" + deleteID).remove()
             console.log(res)
             setModal(!showModal)
+            change++
         }).catch(err => console.log(err.message)), 2000)
     }
 
@@ -75,10 +80,18 @@ function Playlist({ token }) {
 
     const [showModalAdd, setModalAdd] = useState(false);
     const [addID, setAddID] = useState(0);
+    const [modalType, setModalType] = useState();
 
-    function handeModalAdd(id) {
+    function handeModalAdd(id, type) {
         setAddID(id)
+        setModalType(type)
         setModalAdd(!showModalAdd)
+    }
+
+    function success() {
+        if(modalType === "change"){
+            document.getElementById("tr-" + addID).remove()
+        }
     }
 
     return (
@@ -131,16 +144,16 @@ function Playlist({ token }) {
                                     <td>{song.track.name}</td>
                                     <td style={{ fontWeight: "bolder" }}>{song.track.artists[0].name}</td>
                                     <td>{millisToMinutesAndSeconds(song.track.duration_ms)}</td>
-                                    <td id={"song-preview-" + key}><Button variant="success" onClick={() => preview(song.track.preview_url, key)}>Play</Button></td>
-                                    <td><Button variant="primary" onClick={() => handeModalAdd(key)}>Agregar</Button>
-                                        <Button className="mx-1" variant="warning" onClick={() => preview(song.track.preview_url, key)}>Cambiar</Button>
-                                        <Button variant="danger" onClick={() => handeModal(key)}>Eliminar</Button></td>
+                                    <td id={"song-preview-" + key}>{!play && playNum === key ? <OverlayTrigger placement="bottom" overlay={<Tooltip>Pausar preview</Tooltip>}><Button variant="danger" onClick={() => preview(song.track.preview_url, key)}>Pausar</Button></OverlayTrigger> : <OverlayTrigger placement="bottom" overlay={<Tooltip>Reproducir preview</Tooltip>}><Button variant="success" disabled={!song.track.preview_url} title={!song.track.preview_url ? "No tiene preview" : ""} onClick={() => preview(song.track.preview_url, key)}>Play</Button></OverlayTrigger>}</td>
+                                    <td><OverlayTrigger placement="bottom" overlay={<Tooltip>Agregar a otra playlist</Tooltip>}><Button variant="primary" title="Agregar a otra playlist" onClick={() => handeModalAdd(key, "add")}>Agregar</Button></OverlayTrigger>
+                                    <OverlayTrigger placement="bottom" overlay={<Tooltip>Cambiar a otra playlist</Tooltip>}><Button className="mx-1" variant="warning" onClick={() => handeModalAdd(key, "change")}>Cambiar</Button></OverlayTrigger>
+                                    <OverlayTrigger placement="bottom" overlay={<Tooltip>Eliminar de la playlist</Tooltip>}><Button variant="danger" onClick={() => handeModal(key)}>Eliminar</Button></OverlayTrigger></td>
                                 </tr>
                             )}
                             {playlist.tracks.items.length === 0 && <td colSpan="6">Aún no has agregado ninguna canción.</td>}
                         </tbody>
                     </Table>
-                    {showModalAdd && <ModalAddToPlaylist show={showModalAdd} playlist={playlist} type="change" token={token} id={addID} handleModal={handeModalAdd} />}
+                    {showModalAdd && <ModalAddToPlaylist show={showModalAdd} playlist={playlist} success={success} type={modalType} token={token} id={addID} handleModal={handeModalAdd} />}
                     {showModal && <Modal show={showModal} onHide={handeModal}>
                         <Modal.Header closeButton>
                             <Modal.Title>Eliminar {playlist.tracks.items[deleteID].track.name}</Modal.Title>

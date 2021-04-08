@@ -28,7 +28,7 @@ function Albums({ token }) {
                         <Card.Body>
                             <Card.Title>{album.album.name}</Card.Title>
                             <Card.Subtitle className="my-2 text-muted">Cantidad: {album.album.total_tracks}</Card.Subtitle>
-                            <Button variant="success"><Link to={"/album/" + album.album.id}>Ver album</Link></Button>
+                            <Button variant="success"><Link to={"/album/" + album.album.id}>Ver álbum</Link></Button>
                         </Card.Body>
                     </Card>
                 )}

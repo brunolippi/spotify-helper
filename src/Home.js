@@ -25,7 +25,7 @@ function Home({ token }) {
 
     return (
         <>
-            <Button variant="success" className="float-right"><Link><FontAwesomeIcon icon={faPlus} /> Crear playlist</Link></Button>
+            { /*<Button variant="success" className="float-right"><Link><FontAwesomeIcon icon={faPlus} /> Crear playlist</Link></Button>*/}
             <h2><FontAwesomeIcon icon={faList} /> Playlists</h2>
             <hr />
             <div className="playlists">

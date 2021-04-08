@@ -2,7 +2,7 @@ import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react"
 import { getAlbum } from "../helpers/getAlbums"
-import { Card, Button, Table, Modal, Breadcrumb } from "react-bootstrap"
+import { Card, Button, Table, Modal, Breadcrumb, OverlayTrigger, Tooltip } from "react-bootstrap"
 import { faFileAudio } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import deleteSongFromPlaylist from "../helpers/deleteSongFromPlaylist"
@@ -75,10 +75,18 @@ function Album({ token }) {
 
     const [showModalAdd, setModalAdd] = useState(false);
     const [addID, setAddID] = useState(0);
+    const [modalType, setModalType] = useState();
 
-    function handeModalAdd(id) {
+    function handeModalAdd(id, type) {
         setAddID(id)
+        setModalType(type)
         setModalAdd(!showModalAdd)
+    }
+
+    function success() {
+        if(modalType === "change"){
+            document.getElementById("tr-" + addID).remove()
+        }
     }
 
     return (
@@ -88,14 +96,14 @@ function Album({ token }) {
                     <Breadcrumb>
                         <Breadcrumb.Item><Link to="/">Home</Link></Breadcrumb.Item>
                         <Breadcrumb.Item>
-                        <Link to="/">Álbumes</Link>
+                        <Link to="/albums">Álbumes</Link>
                         </Breadcrumb.Item>
                         <Breadcrumb.Item active>{playlist.name}</Breadcrumb.Item>
                     </Breadcrumb>
                     <Card className="m-2 float-right" style={{ width: '15rem', display: 'absolute' }}>
                         {playlist.images[0] && <Card.Img variant="top" src={playlist.images[0].url} />}
                     </Card>
-                    <h2><FontAwesomeIcon icon={faFileAudio} /> Album: <h2 style={{ fontWeight: "bolder", display: "inline" }}>{playlist.name}</h2></h2>
+                    <h2><FontAwesomeIcon icon={faFileAudio} /> Álbum: <h2 style={{ fontWeight: "bolder", display: "inline" }}>{playlist.name}</h2></h2>
                     <hr></hr>
                     {playlist.description &&
                         <>
@@ -129,16 +137,14 @@ function Album({ token }) {
                                     <td>{song.name}</td>
                                     <td style={{ fontWeight: "bolder" }}>{song.artists[0].name}</td>
                                     <td>{millisToMinutesAndSeconds(song.duration_ms)}</td>
-                                    <td id={"song-preview-" + key}><Button variant="success" onClick={() => preview(song.preview_url, key)}>Play</Button></td>
-                                    <td><Button variant="primary" onClick={() => handeModalAdd(key)}>Agregar</Button>
-                                        <Button className="mx-1" variant="warning" onClick={() => preview(song.preview_url, key)}>Cambiar</Button>
-                                        <Button variant="danger" onClick={() => handeModal(key)}>Eliminar</Button></td>
+                                    <td id={"song-preview-" + key}>{!play && playNum === key ? <OverlayTrigger placement="bottom" overlay={<Tooltip>Pausar preview</Tooltip>}><Button variant="danger" onClick={() => preview(song.preview_url, key)}>Pausar</Button></OverlayTrigger> : <OverlayTrigger placement="bottom" overlay={<Tooltip>Reproducir preview</Tooltip>}><Button variant="success" disabled={!song.preview_url} title={!song.preview_url ? "No tiene preview" : ""} onClick={() => preview(song.preview_url, key)}>Play</Button></OverlayTrigger>}</td>
+                                    <td><OverlayTrigger placement="bottom" overlay={<Tooltip>Agregar a otra playlist</Tooltip>}><Button variant="primary" title="Agregar a una playlist" onClick={() => handeModalAdd(key, "add")}>Agregar</Button></OverlayTrigger></td>
                                 </tr>
                             )}
                             {playlist.tracks.items.length === 0 && <td colSpan="6">Aún no has agregado ninguna canción.</td>}
                         </tbody>
                     </Table>
-                    {showModalAdd && <ModalAddToPlaylist show={showModalAdd} playlist={playlist} type="change" token={token} id={addID} handleModal={handeModalAdd} />}
+                    {showModalAdd && <ModalAddToPlaylist show={showModalAdd} playlist={playlist} success={success} type={modalType} token={token} id={addID} handleModal={handeModalAdd} />}
                     {showModal && <Modal show={showModal} onHide={handeModal}>
                         <Modal.Header closeButton>
                             <Modal.Title>Eliminar {playlist.tracks.items[deleteID].track.name}</Modal.Title>

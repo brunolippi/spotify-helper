@@ -1,6 +1,6 @@
 function getPlaylists(token){
     return new Promise((resolve, reject) => {
-        const endpoint = "https://api.spotify.com/v1/me/playlists"
+        const endpoint = "https://api.spotify.com/v1/me/playlists?limit=50"
         fetch(endpoint, { 
             method: 'GET', 
             headers: new Headers({
