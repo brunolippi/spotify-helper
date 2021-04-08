@@ -38,7 +38,6 @@ function App() {
       })
         .then(res => res.json())
         .then(res => {
-          console.log(res)
           resolve(res)
         });
     })
@@ -51,13 +50,11 @@ function App() {
   useEffect(() => {
     let params = (new URL(document.location)).searchParams;
     let _token = params.get("code");
-    console.log("Token: " + accessToken);
     if (_token) {
       getToken(_token).then(res => {
       setAccessToken(res.access_token)
       getProfile(res.access_token).then(res => {
         setProfile(res)
-        console.log(res)
       })
     })
     }

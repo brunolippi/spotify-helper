@@ -12,7 +12,6 @@ function Home({ token }) {
 
     useEffect(() => {
         getPlaylists(token).then(res => {
-            console.log(res)
             setLists(res.items)
         })
         let uri = window.location.toString();

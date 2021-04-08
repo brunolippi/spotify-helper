@@ -11,7 +11,6 @@ function Albums({ token }) {
 
     useEffect(() => {
         getAlbums(token).then(res => {
-            console.log(res)
             setAlbums(res.items)
         })
     }, [])

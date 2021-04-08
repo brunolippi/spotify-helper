@@ -22,7 +22,6 @@ function Playlist({ token }) {
     useEffect(() => {
         getPlaylist(token, id).then(res => {
             setPlaylist(res)
-            console.log(res)
         })
     }, [])
 
@@ -65,7 +64,6 @@ function Playlist({ token }) {
     async function deleteSong(itemID) {
         setTimeout(() => deleteSongFromPlaylist(token, playlist.id, playlist.tracks.items[deleteID].track.uri, deleteID).then((res) => {
             document.getElementById("tr-" + deleteID).remove()
-            console.log(res)
             setModal(!showModal)
             change++
         }).catch(err => console.log(err.message)), 2000)

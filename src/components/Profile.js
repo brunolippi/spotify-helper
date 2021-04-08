@@ -13,7 +13,6 @@ function Profile({ token }) {
     useEffect(() => {
         getProfile(token).then(res => {
             setProfile(res)
-            console.log(res)
         })
     }, [])
 
