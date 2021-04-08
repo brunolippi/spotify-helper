@@ -6,3 +6,6 @@ Este sitio está publicado en [Netlify](https://spotify-helper.netlify.app/) (ht
 
 
 # <img src="public/github/playlists.JPG">
+# <img src="public/github/playlist.JPG">
+# <img src="public/github/albumes.JPG">
+# <img src="public/github/library.JPG">
