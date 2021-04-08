@@ -81,8 +81,6 @@ function Library({ token }) {
         <>
             {playlist &&
                 <>
-                    <Card className="m-2 float-right" style={{ width: '15rem', display: 'absolute' }}>
-                    </Card>
                     <h2><FontAwesomeIcon icon={faHeart} /> Me gusta</h2>
                     <hr></hr>
                     <b>Descripción: </b>
