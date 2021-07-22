@@ -6,11 +6,10 @@
         width: 13%;
         height: 100%;
         padding: 48px 0 0;
-        background-color:#000058!important;
+        background-color:#00001f!important;
     }
 
 .sidebar::before{
-
     background-color:#f3f5f7!important
 }
 
@@ -34,9 +33,14 @@
     text-align: left;
     align-items: center;
     display: flex;
-    justify-content: space-between
+    justify-content: space-between;
+    transition: all 300ms;
+}
+
+.nav-link:hover {
+    background-color: #ffffff10;
 }
 
 .sidebar .active {
-    background-color:#000072!important
+    background-color:#ffffff29!important
 }

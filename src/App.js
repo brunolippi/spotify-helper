@@ -6,7 +6,7 @@ import Playlist from './components/Playlist';
 import Sidebar from './components/Sidebar';
 import Library from './components/Library';
 import Info from './components/Info';
-import Home from './Home'
+import Home from './components/Home'
 import Login from './components/Login';
 import { BrowserRouter, Route } from 'react-router-dom';
 import { useEffect, useState } from "react";
@@ -14,6 +14,7 @@ import Profile from './components/Profile';
 import Albums from './components/Albums';
 import Album from './components/Album';
 import getProfile from "./helpers/getProfile"
+import Search from "./components/Search";
 
 const tokenEndpoint = 'https://accounts.spotify.com/api/token';
 const redirect_uri = "https://spotify-helper.netlify.app";
@@ -24,12 +25,12 @@ function App() {
 
   function getToken(token) {
     return new Promise(function(resolve, reject) {
-      fetch(tokenEndpoint, { 
-        method: 'post', 
+      fetch(tokenEndpoint, {
+        method: 'post',
         headers: new Headers({
-          'Authorization': 'Basic '+btoa('17fe4d950d0a4aea98cb4de221277d80:4bfa4244e8584f539ed82b380641dca7'), 
+          'Authorization': 'Basic '+btoa('17fe4d950d0a4aea98cb4de221277d80:4bfa4244e8584f539ed82b380641dca7'),
           'Content-Type': 'application/x-www-form-urlencoded'
-        }), 
+        }),
         body: new URLSearchParams({
           "grant_type": "authorization_code",
           "code": token,
@@ -59,7 +60,7 @@ function App() {
     })
     }
   }, [])
-  
+
 
   return (
     <BrowserRouter>
@@ -78,6 +79,7 @@ function App() {
                                 <Route exact path="/library"><Library token={accessToken} /></Route>
                                 <Route exact path="/album/:id"><Album token={accessToken} /></Route>
                                 <Route exact path="/albums"><Albums token={accessToken} /></Route>
+                                <Route exact path="/search"><Search token={accessToken} /></Route>
                                 <Route exact path="/info"><Info /></Route>
                                 <Route exact path="/login"><Login /></Route>
                               </>

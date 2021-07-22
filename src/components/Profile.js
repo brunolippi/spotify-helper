@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react"
 import getProfile from "../helpers/getProfile"
 import { Card, Button } from "react-bootstrap"
@@ -22,7 +21,7 @@ function Profile({ token }) {
             {profile &&
                 <>
                     <Card className="m-2 float-right" style={{ width: '15rem', display: 'absolute' }}>
-                        <Card.Img variant="top" src={profile.images[0].url} />
+                        <Card.Img id="profile-photo" variant="top" src={profile.images[0].url} />
                     </Card>
                     <h2><FontAwesomeIcon icon={faUser} /> Perfil</h2>
                     <hr></hr>

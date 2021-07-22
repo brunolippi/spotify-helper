@@ -25,7 +25,7 @@ function Albums({ token }) {
                     <Card className="m-2" style={{ width: '20rem', display: 'inline-flex' }}>
                         <Card.Img variant="top" width="318" height="318" src={album.album.images[0].url || BlankImage} />
                         <Card.Body>
-                            <Card.Title>{album.album.name}</Card.Title>
+                            <Card.Title><Link to={"/album/" + album.album.id}>{album.album.name}</Link></Card.Title>
                             <Card.Subtitle className="my-2 text-muted">Cantidad: {album.album.total_tracks}</Card.Subtitle>
                             <Button variant="success"><Link to={"/album/" + album.album.id}>Ver álbum</Link></Button>
                         </Card.Body>

@@ -95,3 +95,75 @@ ol {
   display: flex;
   align-items: center;
 }
+
+.card img {
+  border-radius: 6px!important;
+}
+
+.card a {
+  color: inherit!important;
+}
+
+.card a:hover {
+  text-decoration: none!important;
+}
+
+.card button {
+  margin-top: .25rem;
+}
+
+.search-input {
+  font-size: 2rem;
+  background-color: inherit;
+  border: none;
+  color: #212529;
+}
+
+.search-input::placeholder {
+  color: #212529;
+  font-weight: 500;
+}
+
+.search-input:focus {
+  outline: none;
+}
+
+.search-icon {
+  font-size: 2rem;
+  margin-right: .7rem;
+}
+
+.search-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.search-result img {
+  display: inline-flex;
+}
+
+.search-result p {
+  display: inline-flex!important;
+}
+
+.search-checkbox {
+  display: block;
+  padding-top: 0.5rem;
+}
+
+.search-checkbox label{
+  margin-right: 1.7rem;
+}
+
+.search-checkbox input{
+  margin-left: 0.5rem;
+}
+
+.search-options, .search-checkbox {
+  filter: opacity(0.67);
+  margin-left: 0.5rem;
+}
+
+.search-image {
+  border-radius: 50px;
+}

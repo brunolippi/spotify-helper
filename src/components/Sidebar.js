@@ -1,4 +1,4 @@
-import { faList, faSignOutAlt, faUser, faHeart, faCompactDisc } from '@fortawesome/free-solid-svg-icons'
+import {faList, faSignOutAlt, faUser, faHeart, faCompactDisc, faSearch} from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React , {useState} from 'react'
 import {Nav} from 'react-bootstrap'
@@ -27,6 +27,9 @@ function Sidebar(props) {
             </Nav.Item>
             <Nav.Item>
                 <Nav.Link eventKey="/library" to="/library" as={Link}> Me gusta <FontAwesomeIcon className="float-right" icon={faHeart} /></Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+                <Nav.Link eventKey="/search" to="/search" as={Link}> Buscar <FontAwesomeIcon className="float-right" icon={faSearch} /></Nav.Link>
             </Nav.Item>
             <Nav.Item>
                 <Nav.Link eventKey="/profile" to="/profile" as={Link}> Mi perfil <FontAwesomeIcon className="float-right" icon={faUser} /></Nav.Link>

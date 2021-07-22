@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react"
-import "./App.css"
+import "../App.css"
 import { Button, Card } from "react-bootstrap"
 import { faPlus, faList, faFileAudio } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { getPlaylists } from './helpers/getPlaylists'
+import { getPlaylists } from '../helpers/getPlaylists'
 import { Link } from "react-router-dom";
-import BlankImage from "./img/blank.png"
+import BlankImage from "../img/blank.png"
 
 function Home({ token }) {
     const [lists, setLists] = useState();
@@ -30,9 +30,9 @@ function Home({ token }) {
             <div className="playlists">
                 {lists && lists.map((playlist, i) =>
                     <Card className="m-2" style={{ width: '20rem', display: 'inline-flex' }}>
-                        <Card.Img variant="top" width="318" height="318" src={playlist.images[0] && playlist.images[0].url || BlankImage} />
+                        <Card.Img href={"/playlist/" + playlist.id} variant="top" width="318" height="318" src={playlist.images[0] && playlist.images[0].url || BlankImage} />
                         <Card.Body>
-                            <Card.Title>{playlist.name}</Card.Title>
+                            <Card.Title><Link to={"/playlist/" + playlist.id}>{playlist.name}</Link></Card.Title>
                             <Card.Subtitle className="my-2 text-muted">Cantidad: {playlist.tracks.total}</Card.Subtitle>
                             <Button variant="success"><Link to={"/playlist/" + playlist.id}>Ver playlist</Link></Button>
                         </Card.Body>
