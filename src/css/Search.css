@@ -1,0 +1,64 @@
+.search-input {
+    font-size: 2rem;
+    background-color: inherit;
+    border: none;
+    color: #212529;
+}
+
+.search-input::placeholder {
+    color: #212529;
+    font-weight: 500;
+}
+
+.search-input:focus {
+    outline: none;
+}
+
+.search-icon {
+    font-size: 2rem;
+    margin-right: .7rem;
+}
+
+.search-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.search-result {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    justify-self: center;
+}
+
+.search-result img {
+    display: inline-flex;
+}
+
+
+.search-checkbox {
+    display: block;
+    padding-top: 0.5rem;
+}
+
+.search-checkbox label{
+    margin-right: 1.7rem;
+}
+
+.search-checkbox input{
+    margin-left: 0.5rem;
+}
+
+.search-options, .search-checkbox {
+    filter: opacity(0.67);
+    margin-left: 0.5rem;
+}
+
+.search-image {
+    border-radius: 50px;
+}
+
+.search, "1"{
+
+}

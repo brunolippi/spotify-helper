@@ -4,6 +4,7 @@ import { Card, Button } from "react-bootstrap"
 import {faSearch, faUser} from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {default as blank} from '../img/blank.png'
+import '../css/Search.css'
 import {Link} from "react-router-dom";
 
 
@@ -60,7 +61,7 @@ function Search({ token }) {
                 <hr></hr>
                 <br/>
                 <div className="search-container">
-                {searchOptions.artists && search &&
+                {searchOptions.artists && search && searchResults.artists &&
                 <>
                 <h2>Artistas</h2>
                     <br/>
@@ -72,19 +73,28 @@ function Search({ token }) {
                             </div>
                     })}
                 </>}
-                {searchOptions.tracks && search &&
+                {searchOptions.tracks && search && searchResults.tracks &&
                 <>
                     <h2>Canciones</h2>
                     <br/>
                     {searchResults.tracks && searchResults.tracks.items.map((res) => {
                         return <div className="search-result">
+                            <div className="search 1">
                             <img className="search-image" src={image(res.album.images)} height="64" width="64" />
+                            </div>
+                            <div className="search 2">
                             <a href={res.external_urls.spotify}> {res.name} </a>
-                            <hr/>
+                            </div>
+                            <div className="search 3">
+                            <a href={res.artists[0].external_urls.spotify}> {res.artists[0].name} </a>
+                            </div>
+                            <div className="search 4">
+                            <a href={res.artists[0].external_urls.spotify}> {res.artists[0].name} </a>
+                            </div>
                         </div>
                     })}
                 </>}
-                {searchOptions.albums && search &&
+                {searchOptions.albums && search && searchResults.albums &&
                 <>
                     <h2>Albumes</h2>
                     <br/>
